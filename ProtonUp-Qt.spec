@@ -44,7 +44,6 @@ fi
 rm -rf squashfs-root
 
 %files
-%license COPYING
 %{_bindir}/protonup-qt
 %{_datadir}/applications/protonup-qt.desktop
 %{_datadir}/icons/hicolor/*/*/*
