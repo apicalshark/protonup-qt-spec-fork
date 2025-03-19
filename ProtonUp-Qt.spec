@@ -6,7 +6,7 @@ License:        GPLv3
 URL:            https://davidotek.github.io/protonup-qt
 
 %global _pkgname ProtonUp-Qt
-%global appimage_file %{_pkgname}-%{version}-x86_64.AppImage
+%global appimage_file ProtonUp-Qt-%{version}-x86_64.AppImage
 
 Source0:        protonup-qt.desktop
 Source1:        protonup-qt
@@ -17,14 +17,15 @@ Requires:       fuse
 %{summary}
 
 %prep
-wget https://github.com/DavidoTek/ProtonUp-Qt/releases/download/v%{version}/%{appimage_file}
+wget https://github.com/DavidoTek/ProtonUp-Qt/releases/download/v%{version}/ProtonUp-Qt-%{version}-x86_64.AppImage
+
 echo "Extracting icons from AppImage..."
 chmod 755 %{appimage_file}
 ./%{appimage_file} --appimage-extract > /dev/null
 
 %install
 mkdir -p %{buildroot}%{_bindir}/protonup-qt-data
-install -Dm 0755 %{appimage_file} %{buildroot}%{_bindir}/protonup-qt-data/%{appimage_file}
+install -Dm 0755 ProtonUp-Qt-%{version}-x86_64.AppImage %{buildroot}%{_bindir}/protonup-qt-data/ProtonUp-Qt-%{version}-x86_64.AppImage
 install -Dm 0755 %{SOURCE1} %{buildroot}%{_bindir}/protonup-qt
 cd "squashfs-root/usr/share/icons"
 find "." -type f -exec install -Dm644 "{}" "%{buildroot}%{_datadir}/icons/{}" \;
@@ -34,7 +35,7 @@ install -Dm 0644 %{SOURCE0} %{buildroot}%{_datadir}/applications/protonup-qt.des
 %{_bindir}/protonup-qt
 %{_datadir}/applications/protonup-qt.desktop
 %{_datadir}/icons/*
-%{_bindir}/protonup-qt-data/*
+%{_bindir}/protonup-qt-data/ProtonUp-Qt-%{version}-x86_64.AppImage
 
 %changelog
 %autochangelog
