@@ -16,8 +16,8 @@ Source2:        protonup-qt
 
 
 
-BuildRequires:  fuse2
-Requires:       fuse2
+BuildRequires:  fuse
+Requires:       fuse
 
 %description
 %{summary}
