@@ -1,2 +1,2 @@
 #!/bin/sh
-/opt/protonup-qt/protonup-qt.AppImage "$@"
+/usr/bin/protonup-qt-data/ProtonUp-Qt-*.AppImage "$@"
