@@ -23,14 +23,14 @@ Requires:       fuse
 %{summary}
 
 %prep
-wget %{Source0}
+wget %{SOURCE0}
 echo "Extracting icons from AppImage..."
 chmod 755 %{appimage_file}
 ./%{appimage_file} --appimage-extract > /dev/null
 
 %install
 mkdir -p %{buildroot}%{_optir}/protonup-qt
-install -Dm 0755 %{SOURCE0} %{buildroot}%{_optir}/protonup-qt/%{appimage_file}
+install -Dm 0755 %{appimage_file} %{buildroot}%{_optir}/protonup-qt/%{appimage_file}
 install -Dm 0755 %{SOURCE2} %{buildroot}%{_bindir}/protonup-qt
 install -Dm 0644 %{SOURCE1} %{buildroot}%{_datadir}/applications/protonup-qt.desktop
 
