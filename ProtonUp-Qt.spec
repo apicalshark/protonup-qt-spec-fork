@@ -1,43 +1,55 @@
-Name:		protonup-qt
-Version:	2.11.1
-Release:	1.git%{?dist}
-Summary:	Install and manage Proton-GE and Luxtorpeda for Steam and Wine-GE for Lutris
-License:	GPL3
-URL:		https://davidotek.github.io/protonup-qt
-Source0:	https://github.com/DavidoTek/ProtonUp-Qt/archive/refs/tags/v%{version}.tar.gz
-Source1:	net.davidotek.pupgui2.sh
+Name:           ProtonUp-Qt
+Version:        2.11.1
+Release:        1%{?dist}
+Summary:        Install and manage Proton-GE for Steam and Wine-GE for Lutris with this graphical user interface.
+License:        GPLv3
+URL:            https://davidotek.github.io/protonup-qt
 
-BuildRequires: python3
-BuildRequires:  python3-devel
-Requires: python-evdev
-Requires: python3-pyxdg
-Requires: python3-requests
-Requires: python3-zstandard
-Requires: python3-steam
-Requires: python3-vdf
-Requires: python3-pip
-Requires: qt6-qttools
+
+%global _pkgname ProtonUp-Qt
+%global appimage_file %{_pkgname}-%{version}-x86_64.AppImage
+
+# Source settings
+Source0:        https://github.com/DavidoTek/ProtonUp-Qt/releases/download/v%{version}/%{appimage_file}
+Source1:        protonup-qt.desktop
+Source2:        protonup-qt
+
+
+
+BuildRequires:  fuse2
+Requires:       fuse2
 
 %description
-Proton-GE and Wine-GE updater.
+%{summary}
 
 %prep
-%setup -n ProtonUp-Qt-%{version}
+%global arch x86_64
+echo "Extracting icons from AppImage..."
+chmod 755 %{appimage_file}
+./%{appimage_file} --appimage-extract > /dev/null
 
-%build
-mkdir -p $RPM_BUILD_ROOT%{python3_sitearch}/
-mkdir -p $RPM_BUILD_ROOT%{_bindir}/
-cp -Rf pupgui2 -t $RPM_BUILD_ROOT%{python3_sitearch}/
-cp -r share $RPM_BUILD_ROOT/usr/
-cp %{SOURCE1} $RPM_BUILD_ROOT%{_bindir}/net.davidotek.pupgui2
-chmod 755 $RPM_BUILD_ROOT%{_bindir}/net.davidotek.pupgui2
-ln -s /usr/bin/net.davidotek.pupgui2 $RPM_BUILD_ROOT%{_bindir}/%{name}
+%install
+%global arch x86_64
+mkdir -p %{buildroot}%{_optir}/protonup-qt
+install -Dm 0755 %{SOURCE0} %{buildroot}%{_optir}/protonup-qt/%{appimage_file}
+install -Dm 0755 %{SOURCE2} %{buildroot}%{_bindir}/protonup-qt
+install -Dm 0644 %{SOURCE1} %{buildroot}%{_datadir}/applications/protonup-qt.desktop
+
+# Install icons
+mkdir -p %{buildroot}%{_datadir}/icons/hicolor
+if [ -d "squashfs-root/usr/share/icons/hicolor" ]; then
+  find squashfs-root/usr/share/icons/hicolor -depth -print | cpio -pdm %{buildroot}%{_datadir}/icons/hicolor
+fi
+
+# Remove extracted squashfs-root
+rm -rf squashfs-root
 
 %files
-%{python3_sitearch}/pupgui2/
-%{_bindir}/net.davidotek.pupgui2
+%license COPYING
 %{_bindir}/protonup-qt
-%{_datadir}/*
+%{_datadir}/applications/protonup-qt.desktop
+%{_datadir}/icons/hicolor/*/*/*
+%{_optir}/protonup-qt/*
 
 %changelog
 %autochangelog
