@@ -18,14 +18,15 @@ Requires:       fuse
 
 %prep
 wget https://github.com/DavidoTek/ProtonUp-Qt/releases/download/v%{version}/ProtonUp-Qt-%{version}-x86_64.AppImage
-
+cp %{appimage_file} %{appimage_file}.new
 echo "Extracting icons from AppImage..."
 chmod 755 %{appimage_file}
 ./%{appimage_file} --appimage-extract > /dev/null
 
+
 %install
 mkdir -p %{buildroot}%{_bindir}/protonup-qt-data
-cp ProtonUp-Qt-%{version}-x86_64.AppImage %{buildroot}%{_bindir}/protonup-qt-data/ProtonUp-Qt-%{version}-x86_64.AppImage
+cp ProtonUp-Qt-%{version}-x86_64.AppImage.new %{buildroot}%{_bindir}/protonup-qt-data/ProtonUp-Qt-%{version}-x86_64.AppImage
 chmod 0755 %{buildroot}%{_bindir}/protonup-qt-data/ProtonUp-Qt-%{version}-x86_64.AppImage
 install -Dm 0755 %{SOURCE1} %{buildroot}%{_bindir}/protonup-qt
 cd "squashfs-root/usr/share/icons"
