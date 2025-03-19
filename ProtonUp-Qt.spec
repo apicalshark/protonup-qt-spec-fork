@@ -16,20 +16,19 @@ Source2:        protonup-qt
 
 
 
-BuildRequires:  fuse
+BuildRequires:  fuse wget
 Requires:       fuse
 
 %description
 %{summary}
 
 %prep
-%global arch x86_64
+wget %{Source0}
 echo "Extracting icons from AppImage..."
 chmod 755 %{appimage_file}
 ./%{appimage_file} --appimage-extract > /dev/null
 
 %install
-%global arch x86_64
 mkdir -p %{buildroot}%{_optir}/protonup-qt
 install -Dm 0755 %{SOURCE0} %{buildroot}%{_optir}/protonup-qt/%{appimage_file}
 install -Dm 0755 %{SOURCE2} %{buildroot}%{_bindir}/protonup-qt
