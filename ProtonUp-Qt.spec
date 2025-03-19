@@ -1,6 +1,6 @@
 Name:           ProtonUp-Qt
 Version:        2.11.1
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Install and manage Proton-GE for Steam and Wine-GE for Lutris with this graphical user interface.
 License:        GPLv3
 URL:            https://davidotek.github.io/protonup-qt
@@ -23,21 +23,18 @@ chmod 755 %{appimage_file}
 ./%{appimage_file} --appimage-extract > /dev/null
 
 %install
-mkdir -p %{buildroot}%{_optir}/protonup-qt
-install -Dm 0755 %{appimage_file} %{buildroot}/opt/protonup-qt/%{appimage_file}
+mkdir -p %{buildroot}%{_bindir}/protonup-qt-data
+install -Dm 0755 %{appimage_file} %{buildroot}%{_bindir}/protonup-qt-data/%{appimage_file}
 install -Dm 0755 %{SOURCE1} %{buildroot}%{_bindir}/protonup-qt
+cd "squashfs-root/usr/share/icons"
+find "." -type f -exec install -Dm644 "{}" "%{buildroot}%{_datadir}/icons/{}" \;
 install -Dm 0644 %{SOURCE0} %{buildroot}%{_datadir}/applications/protonup-qt.desktop
-mkdir -p %{buildroot}%{_datadir}/icons/hicolor
-if [ -d "squashfs-root/usr/share/icons/hicolor" ]; then
-  find squashfs-root/usr/share/icons/hicolor -depth -print | cpio -pdm %{buildroot}%{_datadir}/icons/hicolor
-fi
-rm -rf squashfs-root
 
 %files
 %{_bindir}/protonup-qt
 %{_datadir}/applications/protonup-qt.desktop
 %{_datadir}/icons/hicolor/*/*/*
-/opt/protonup-qt/*
+%{_bindir}/protonup-qt-data/*
 
 %changelog
 %autochangelog
