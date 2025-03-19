@@ -1,6 +1,6 @@
 Name:           ProtonUp-Qt
 Version:        2.11.1
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        Install and manage Proton-GE for Steam and Wine-GE for Lutris with this graphical user interface.
 License:        GPLv3
 URL:            https://davidotek.github.io/protonup-qt
