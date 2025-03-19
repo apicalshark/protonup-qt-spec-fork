@@ -33,7 +33,7 @@ install -Dm 0644 %{SOURCE0} %{buildroot}%{_datadir}/applications/protonup-qt.des
 %files
 %{_bindir}/protonup-qt
 %{_datadir}/applications/protonup-qt.desktop
-%{_datadir}/icons/hicolor/*/*/*
+%{_datadir}/icons/*
 %{_bindir}/protonup-qt-data/*
 
 %changelog
