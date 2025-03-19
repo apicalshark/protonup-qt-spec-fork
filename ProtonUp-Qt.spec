@@ -24,7 +24,7 @@ chmod 755 %{appimage_file}
 
 %install
 mkdir -p %{buildroot}%{_optir}/protonup-qt
-install -Dm 0755 %{appimage_file} %{buildroot}%{_optir}/protonup-qt/%{appimage_file}
+install -Dm 0755 %{appimage_file} %{buildroot}/opt/protonup-qt/%{appimage_file}
 install -Dm 0755 %{SOURCE1} %{buildroot}%{_bindir}/protonup-qt
 install -Dm 0644 %{SOURCE0} %{buildroot}%{_datadir}/applications/protonup-qt.desktop
 mkdir -p %{buildroot}%{_datadir}/icons/hicolor
@@ -37,7 +37,7 @@ rm -rf squashfs-root
 %{_bindir}/protonup-qt
 %{_datadir}/applications/protonup-qt.desktop
 %{_datadir}/icons/hicolor/*/*/*
-%{_optir}/protonup-qt/*
+/opt/protonup-qt/*
 
 %changelog
 %autochangelog
