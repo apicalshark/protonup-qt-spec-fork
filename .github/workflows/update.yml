@@ -15,7 +15,7 @@ jobs:
     env:
       TARGET_REPO: "DavidoTek/ProtonUp-Qt"
       SPEC_FILE: "ProtonUp-Qt.spec"
-      #TAG_PREFIX: "release-"
+      TAG_PREFIX: "v"
 
     steps:
       - name: Checkout local repository
