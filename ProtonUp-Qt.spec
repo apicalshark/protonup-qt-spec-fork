@@ -8,9 +8,10 @@ Source0: https://github.com/DavidoTek/ProtonUp-Qt/archive/refs/tags/v%{version}.
 Source1: net.davidotek.pupgui2.sh
 
 BuildRequires: python3
-BuildRequires:  python3-devel
+BuildRequires: python3-devel
 Requires: python-evdev
-Requires: python3-pyxdg python3-pyside6
+Requires: python3-pyxdg
+Requires: python3-pyside6
 Requires: python3-requests
 Requires: python3-zstandard
 Requires: python3-steam
