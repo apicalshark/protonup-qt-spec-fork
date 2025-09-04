@@ -1,5 +1,5 @@
 Name: protonup-qt
-Version: 2.12.0
+Version: 2.13.0
 Release: 1.git%{?dist}
 Summary: Install and manage Proton-GE and Luxtorpeda for Steam and Wine-GE for Lutris
 License: GPLv3
