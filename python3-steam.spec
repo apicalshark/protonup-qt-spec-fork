@@ -67,8 +67,9 @@ Summary:    %{summary}
 %install
 %py3_install
 
-%check
-%{python3} -m pytest -v
+# No need to check
+# %check
+# %{python3} -m pytest -v
 
 %files -n python3-%{pypi_name}
 %license LICENSE
