@@ -1,6 +1,6 @@
 Name: protonup-qt
 Version: 2.15.0
-Release: 2
+Release: 3
 Summary: Install and manage Proton-GE and Luxtorpeda for Steam and Wine-GE for Lutris
 License: GPLv3
 URL: https://davidotek.github.io/protonup-qt
@@ -32,7 +32,9 @@ cp -Rf pupgui2 -t $RPM_BUILD_ROOT%{python3_sitearch}/
 cp -r share $RPM_BUILD_ROOT/usr/
 cp %{SOURCE1} $RPM_BUILD_ROOT%{_bindir}/net.davidotek.pupgui2
 chmod 755 $RPM_BUILD_ROOT%{_bindir}/net.davidotek.pupgui2
-ln -s /usr/bin/net.davidotek.pupgui2 $RPM_BUILD_ROOT%{_bindir}/%{name}
+pushd $RPM_BUILD_ROOT%{_bindir}
+ln -s net.davidotek.pupgui2 %{name}
+popd
 
 %files
 %{python3_sitearch}/pupgui2/
