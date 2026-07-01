@@ -86,8 +86,5 @@ Summary:    %{summary}
 # Only needed in > 2.0.0
 %{python3_sitelib}/steam-*.egg-info/
 
-# Not included in 2.0.0-alpha
-#%{python3_sitelib}/%{pypi_name}-%{version}-*.egg-info
-
 %changelog
 %autochangelog
