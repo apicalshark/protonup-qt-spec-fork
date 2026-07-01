@@ -1,13 +1,11 @@
 %global pypi_name steam
 
-%global egg_info steam-2.0.0a1-py%{python3_version}.egg-info
-
 # Define the exact upstream name so we can pull the source file correctly
 %define upstream_version 2.0.0-alpha1
 
 Name:       python-%{pypi_name}
 Version:    2.0.0~alpha1
-Release:    1
+Release:    2
 Summary:    Python package for interacting with Steam
 BuildArch:  noarch
 
@@ -84,9 +82,6 @@ Summary:    %{summary}
 %license LICENSE
 %doc README.rst CHANGES.md
 %{python3_sitelib}/%{pypi_name}/
-
-# Only needed in > 2.0.0
-%{python3_sitelib}/%{egg_info}/
 
 %changelog
 %autochangelog
