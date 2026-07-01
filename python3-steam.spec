@@ -1,7 +1,10 @@
 %global pypi_name steam
 
+# Define the exact upstream name so we can pull the source file correctly
+%define upstream_version 2.0.0-alpha1
+
 Name:       python-%{pypi_name}
-Version:    2.0.0-alpha1
+Version:    2.0.0~alpha1
 Release:    1
 Summary:    Python package for interacting with Steam
 BuildArch:  noarch
@@ -10,7 +13,7 @@ License:    MIT
 URL:        https://github.com/solsticegamestudios/steam
 
 # Tests works only woth GitHub sources
-Source0:    %{url}/archive/v%{version}/%{pypi_name}-%{version}.tar.gz
+Source0:    %{url}/archive/v%{version}/%{pypi_name}-%{upstream_version}.tar.gz
 
 BuildRequires: python3-devel
 BuildRequires: python3dist(setuptools)
@@ -61,7 +64,7 @@ Summary:    %{summary}
 %description -n python3-%{pypi_name} %{_description}
 
 %prep
-%autosetup -n %{pypi_name}-%{version}
+%autosetup -n %{pypi_name}-%{upstream_version}
 
 %build
 %py3_build
