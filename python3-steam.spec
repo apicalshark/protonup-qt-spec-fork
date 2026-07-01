@@ -13,7 +13,7 @@ License:    MIT
 URL:        https://github.com/solsticegamestudios/steam
 
 # Tests works only woth GitHub sources
-Source0:    %{url}/archive/v%{version}/%{pypi_name}-%{upstream_version}.tar.gz
+Source0:    %{url}/archive/v%{upstream_version}/%{pypi_name}-%{upstream_version}.tar.gz
 
 BuildRequires: python3-devel
 BuildRequires: python3dist(setuptools)
