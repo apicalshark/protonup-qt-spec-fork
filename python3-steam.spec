@@ -1,13 +1,13 @@
 %global pypi_name steam
 
 Name:       python-%{pypi_name}
-Version:    1.4.4
-Release:    8
+Version:    1.6.1
+Release:    1
 Summary:    Python package for interacting with Steam
 BuildArch:  noarch
 
 License:    MIT
-URL:        https://github.com/ValvePython/steam
+URL:        https://github.com/solsticegamestudios/steam
 
 # Tests works only woth GitHub sources
 Source0:    %{url}/archive/v%{version}/%{pypi_name}-%{version}.tar.gz
@@ -16,6 +16,7 @@ BuildRequires: python3-devel
 BuildRequires: python3dist(setuptools)
 BuildRequires: python3-pyyaml >= 5.4
 
+BuildRequires: python3dist(urllib3)
 BuildRequires: python3dist(cachetools) >= 3.0.0
 BuildRequires: python3dist(gevent-eventemitter) >= 2.1
 BuildRequires: python3dist(gevent) >= 1.3.0
@@ -29,6 +30,7 @@ BuildRequires: python3dist(vcrpy)
 BuildRequires: python3dist(vdf) >= 3.3
 
 # For client
+Requires:   python3dist(urllib3)
 Requires:   python3dist(gevent-eventemitter) >= 2.1
 Requires:   python3dist(gevent) >= 1.3.0
 Requires:   python3dist(protobuf) >= 3.0.0
