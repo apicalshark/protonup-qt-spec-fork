@@ -18,6 +18,7 @@ Source0:    %{url}/archive/v%{upstream_version}/%{pypi_name}-%{upstream_version}
 BuildRequires: python3-devel
 BuildRequires: python3dist(setuptools)
 BuildRequires: python3-pyyaml >= 5.4
+BuildRequires: python3-pip
 
 BuildRequires: python3dist(urllib3)
 BuildRequires: python3dist(cachetools) >= 3.0.0
