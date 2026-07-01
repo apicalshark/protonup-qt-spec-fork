@@ -1,5 +1,7 @@
 %global pypi_name steam
 
+%global egg_info steam-2.0.0a1-py%{python3_version}.egg-info
+
 # Define the exact upstream name so we can pull the source file correctly
 %define upstream_version 2.0.0-alpha1
 
@@ -84,7 +86,7 @@ Summary:    %{summary}
 %{python3_sitelib}/%{pypi_name}/
 
 # Only needed in > 2.0.0
-%{python3_sitelib}/steam-*.egg-info/
+%{python3_sitelib}/%{egg_info}/
 
 %changelog
 %autochangelog
