@@ -80,7 +80,9 @@ Summary:    %{summary}
 %license LICENSE
 %doc README.rst CHANGES.md
 %{python3_sitelib}/%{pypi_name}/
-%{python3_sitelib}/%{pypi_name}-%{version}-*.egg-info
+
+# Not included in 2.0.0-alpha
+#%{python3_sitelib}/%{pypi_name}-%{version}-*.egg-info
 
 %changelog
 %autochangelog
