@@ -32,7 +32,7 @@ BuildRequires: python3dist(pytest-cov)
 BuildRequires: python3dist(pytest)
 BuildRequires: python3dist(requests) >= 2.9.1
 BuildRequires: python3dist(vcrpy)
-BuildRequires: python3dist(vdf) >= 4.0
+BuildRequires: python3-vdf
 
 # For client
 Requires:   python3dist(urllib3)
