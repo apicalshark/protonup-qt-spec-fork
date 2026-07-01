@@ -6,7 +6,7 @@
 
 Name:       python-%{pypi_name}
 Version:    2.0.0~alpha1
-Release:    2
+Release:    3
 Summary:    Python package for interacting with Steam
 BuildArch:  noarch
 
@@ -32,7 +32,7 @@ BuildRequires: python3dist(pytest-cov)
 BuildRequires: python3dist(pytest)
 BuildRequires: python3dist(requests) >= 2.9.1
 BuildRequires: python3dist(vcrpy)
-BuildRequires: python3dist(vdf) >= 3.3
+BuildRequires: python3dist(vdf) >= 4.0
 
 # For client
 Requires:   python3dist(urllib3)
