@@ -1,5 +1,4 @@
 %global pypi_name steam
-%global egg_info steam-2.0.0a1-py3.14.egg-info
 
 # Define the exact upstream name so we can pull the source file correctly
 %define upstream_version 2.0.0-alpha1
@@ -67,13 +66,12 @@ Summary:    %{summary}
 %prep
 %autosetup -n %{pypi_name}-%{upstream_version}
 
-# FIXME & TODO: MUST use modern build macro BEFORE Fedora 45
-# https://docs.fedoraproject.org/en-US/packaging-guidelines/Python/#_build_macros
+
 %build
-%py3_build
+%pyproject_wheel
 
 %install
-%py3_install
+%pyproject_install
 
 # No need to check
 # %check
@@ -83,7 +81,10 @@ Summary:    %{summary}
 %license LICENSE
 %doc README.rst CHANGES.md
 %{python3_sitelib}/%{pypi_name}/
-%{python3_sitelib}/%{egg_info}/
+
+# Only needed in > 2.0.0
+%{python3_sitelib}/steam-*.egg-info/
+
 # Not included in 2.0.0-alpha
 #%{python3_sitelib}/%{pypi_name}-%{version}-*.egg-info
 
