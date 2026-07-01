@@ -2,6 +2,7 @@
 
 # Define the exact upstream name so we can pull the source file correctly
 %define upstream_version 2.0.0-alpha1
+%define version_short steam-2.0.0a1
 
 Name:       python-%{pypi_name}
 Version:    2.0.0~alpha1
@@ -82,6 +83,6 @@ Summary:    %{summary}
 %license LICENSE
 %doc README.rst CHANGES.md
 %{python3_sitelib}/%{pypi_name}/
-
+%{python3_sitelib}/%{version_short}.dist-info/
 %changelog
 %autochangelog
